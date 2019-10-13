@@ -1,0 +1,20 @@
+[
+    {
+        "key": "f2",
+        "command": "workbench.action.tasks.build"
+    },
+    {
+        "key": "f3",
+        "command": "workbench.action.tasks.test"
+    },
+    {
+        "key": "numpad2",
+        "command": "workbench.action.terminal.focus",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "numpad8",
+        "command": "workbench.action.focusActiveEditorGroup",
+        "when": "terminalFocus"
+    }
+]

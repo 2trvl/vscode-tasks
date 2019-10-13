@@ -1,0 +1,87 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "compile clang",
+            "type": "shell",
+            "linux": {
+                "command": "python '${workspaceFolder}/.vscode/compilers/compile.py' '${fileDirname}' '${fileBasename}' '${workspaceFolder}'"
+            },
+            "windows": {
+                "command": "python '${workspaceFolder}\\.vscode\\compilers\\compile.py' '${fileDirname}' '${fileBasename}' '${workspaceFolder}'"
+            },
+            "group": "build",
+            "presentation": {
+                "reveal": "silent"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "run compiled clang",
+            "type": "shell",
+            "linux": {
+                "command": "${workspaceFolder}/cdist/${relativeFileDirname}/${fileBasenameNoExtension}.exe"
+            },
+            "windows": {
+                "command": "${workspaceFolder}\\cdist\\${relativeFileDirname}\\${fileBasenameNoExtension}.exe"
+            },
+            "group": "test",
+            "presentation": {
+                "reveal": "always",
+                "focus": false,
+                "clear": true
+            }
+        },
+        {
+            "label": "compile python via pyinstaller",
+            "type": "shell",
+            "linux": {
+                "command": "python '${workspaceFolder}/.vscode/compilers/pycompile.py' '${fileDirname}' '${fileBasename}' '${workspaceFolder}'"
+            },
+            "windows": {
+                "command": "python '${workspaceFolder}\\.vscode\\compilers\\pycompile.py' '${fileDirname}' '${fileBasename}' '${workspaceFolder}'"
+            },
+            "group": "build",
+            "presentation": {
+                "reveal": "silent",
+                "focus": false,
+                "clear": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "run python file",
+            "type": "shell",
+            "linux": {
+                "command": "python '${file}'"
+            },
+            "windows": {
+                "command": "python '${file}'"
+            },
+            "group": "test",
+            "presentation": {
+                "reveal": "always",
+                "focus": false,
+                "clear": true
+            }
+        },
+        {
+            "label": "test script",
+            "type": "shell",
+            "linux": {
+                "command": "python '${workspaceFolder}/.vscode/testers/testSite.py' '${file}' '${file}.test' '${fileExtname}' '${fileDirname}' '${workspaceFolder}' '${fileBasename}'"
+            },
+            "windows": {
+                "command": ""
+            },
+            "group": "test",
+            "presentation": {
+                "reveal": "always",
+                "focus": false,
+                "clear": true
+            }
+        }
+    ]
+}
