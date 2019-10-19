@@ -5,7 +5,7 @@ This repository contains tasks for automating C and Python programming in vscode
 1. [Installing](#installing)
 2. [Keybindings](#keybindings)
 3. [Features](#features)
-4. [How to use the test site?](#how-to-use-the-test-site?)
+4. [How to use the test site?](#how-to-use-the-test-site)
 
 # Installing
 
