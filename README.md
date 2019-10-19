@@ -31,6 +31,8 @@ This repository contains tasks for automating C and Python programming in vscode
 * <b>[numpad2]</b> - focus on the integrated terminal
 * <b>[numpad8]</b> - focus on the code area
 
+<b>important:</b> to use numpad2 and numpad8 disable num lock
+
 # Features
 
 * Compile
