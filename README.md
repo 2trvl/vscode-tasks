@@ -47,7 +47,7 @@ This repository contains tasks for automating C and Python programming in vscode
 
 * Сreate test file with name <<i>YourFileBasename</i>><i>.test</i>
     * for example: code.c --> code.c.test, where <b>code.c.test is a file with tests for code.c</b>
-* On each new line, write inputs without spaces, separating them <i>";"</i> (for example: if the program accepts 3 numbers without spaces in one input, let these numbers be 1, 2 and 3, and the result should be 5, you need to write "1 2 3 | 5")
+* On each new line, write inputs without spaces, separating them <i>";"</i> (for example: if the program accepts 3 numbers without spaces in one input, let these numbers be 1, 2 and 3, and the result should be 5, then you need to write "1 2 3 | 5")
    * <span style="text-decoration:underline">important:</span> after the last input do not put ";", instead ";" put "|" and write the expected output
    * another example for program, which <b>accepts 3 names and prints a greeting for them</b>, you need to write in .test file this string "Pavel;Linus;Richard | Hello, Pavel, Linus, Richard!"
 * if you still have questions, then see the files:
