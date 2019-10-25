@@ -2,6 +2,7 @@
 
 import os
 import sys
+import time
 import subprocess
 
 scriptPath = sys.argv[1]
@@ -23,6 +24,8 @@ def read_test_file():
         inputs.append(line[0])
         # append output in list
         line[1] = line[1].strip()
+        line[1] = line[1].split(";")
+        line[1] = "\n".join(line[1])
         outputs.append(line[1])
 
 def get_compiled_clang_path():
@@ -39,30 +42,60 @@ if __name__ == "__main__":
     except FileNotFoundError:
         print("Warning: Сreate test file with name <YourFileBasename>.test")
     print("Inputs: ", inputs)
-    print("Outputs: ", outputs)
+    print("Outputs: ", outputs, "\n")
 
     # run tests
+    success = 0
+
     if scriptExtension == ".py":
+        main_timer = time.time()
         for index, task in enumerate(inputs):
-            process = subprocess.Popen([sys.executable, scriptPath], stdout=subprocess.PIPE, 
-                                       stdin=subprocess.PIPE, stderr=subprocess.STDOUT)
+            timer = time.time()
+            process = subprocess.Popen(
+                [sys.executable, scriptPath],
+                stdout=subprocess.PIPE,
+                stdin=subprocess.PIPE,
+                stderr=subprocess.STDOUT)
             task = ("\n".join(task) + "\n").encode()
             taskOutput = process.communicate(input=task)[0].decode().strip()
             # print results
-            print("%s test: %s (expected: %s, received: %s)" % (index+1, taskOutput==outputs[index], outputs[index], taskOutput))
+            result = taskOutput==outputs[index]
+            print("%s test: %s (expected: \"%s\", received: \"%s\", time elapsed: %s)" % (
+                index+1,
+                result,
+                outputs[index].replace("\n", r"\n"),
+                taskOutput.replace("\n", r"\n"),
+                time.time()-timer))
+            if result:
+                success += 1
+        print("\n%s of %s tests\nall-time elapsed: %s" % (success, len(outputs), time.time()-main_timer))
     
     elif scriptExtension == ".c":
         compiledClang = get_compiled_clang_path()
         print("Running %s" % compiledClang)
         
         if os.path.isfile(compiledClang):
+            main_timer = time.time()
             for index, task in enumerate(inputs):
-                process = subprocess.Popen([compiledClang], stdout=subprocess.PIPE, 
-                                           stdin=subprocess.PIPE, stderr=subprocess.STDOUT)
+                timer = time.time()
+                process = subprocess.Popen(
+                    [compiledClang],
+                    stdout=subprocess.PIPE,
+                    stdin=subprocess.PIPE,
+                    stderr=subprocess.STDOUT)
                 task = ("\n".join(task) + "\n").encode()
                 taskOutput = process.communicate(input=task)[0].decode().strip()
                 # print results
-                print("%s test: %s (expected: %s, received: %s)" % (index+1, taskOutput==outputs[index], outputs[index], taskOutput))
+                result = taskOutput==outputs[index]
+                print("%s test: %s (expected: \"%s\", received: \"%s\", time elapsed: %s)" % (
+                    index+1,
+                    result,
+                    outputs[index].replace("\n", r"\n"),
+                    taskOutput.replace("\n", r"\n"),
+                    time.time()-timer))
+                if result:
+                    success += 1
+            print("\n%s of %s tests\nall-time elapsed: %s" % (success, len(outputs), time.time()-main_timer))
         else:
             print("Warning: Compile clang before test it")
     
