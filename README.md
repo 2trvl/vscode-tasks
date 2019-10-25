@@ -58,7 +58,8 @@ This repository contains tasks for automating C and Python programming in vscode
     * ./test/B.py and ./test/B.py.test
 
 # Test site log example
-'''Reading /home/trvlx/Desktop/vscode-tasks/test/B.py.test
+```markdown
+Reading /home/trvlx/Desktop/vscode-tasks/test/B.py.test
 Inputs:  [['abrakadabrabrakadabra'], ['acacacaca'], ['abcabc'], ['abababab'], ['abcd'], ['tatbt'], ['abrabrab']]
 Outputs:  ['YES\nabrakadabra', 'YES\nacaca', 'NO', 'YES\nababab', 'NO', 'NO', 'YES\nabrab'] 
 
@@ -71,4 +72,5 @@ Outputs:  ['YES\nabrakadabra', 'YES\nacaca', 'NO', 'YES\nababab', 'NO', 'NO', 'Y
 7 test: True (expected: "YES\nabrab", received: "YES\nabrab", time elapsed: 0.019896268844604492)
 
 7 of 7 tests
-all-time elapsed: 0.259307861328125'''
+all-time elapsed: 0.259307861328125
+```
