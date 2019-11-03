@@ -16,6 +16,19 @@ relativeFileDirname = fileDirname[len(workspaceFolder)+1:]
 distpath = os.path.join(workspaceFolder, "cdist", relativeFileDirname, fileBasenameNewExtension)
 relativeFileDirname = os.path.join("cdist", relativeFileDirname)
 
+# ADDS ALL LOCAL DEPENDENCIES TO COMPILATION
+def check_local():
+    files = []
+    files.append(filepath)
+
+    lines = open(filepath).readlines()
+    for line in lines:
+        if line.find("#include \"") != -1:
+            files.append(line[10:-3] + "c")
+
+    print("Files to compile:", files)
+    return files
+
 # COMMAND GENERATOR
 def construct():
     COMMAND = []
@@ -23,7 +36,8 @@ def construct():
         COMMAND.append("g++")
     else:
         COMMAND.append("gcc")
-    COMMAND.append(filepath)
+    for file in files:
+        COMMAND.append(file)
     COMMAND.append("-o")
     COMMAND.append(distpath)
 
@@ -53,6 +67,7 @@ def create_dirs():
                 os.mkdir(path)
 
 if __name__ == "__main__":
+    files = check_local()
     COMMAND = construct()
     create_dirs()
     subprocess.check_call(COMMAND, cwd=fileDirname)  ## cwd - cd current path
