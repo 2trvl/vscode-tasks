@@ -10,7 +10,7 @@
                 "command": "python '${workspaceFolder}/.vscode/compilers/compile.py' '${fileDirname}' '${fileBasename}' '${workspaceFolder}'"
             },
             "windows": {
-                "command": "python '${workspaceFolder}\\.vscode\\compilers\\compile.py' '${fileDirname}' '${fileBasename}' '${workspaceFolder}'"
+                "command": "python ${workspaceFolder}\\.vscode\\compilers\\compile.py ${fileDirname} ${fileBasename} ${workspaceFolder}"
             },
             "group": "build",
             "presentation": {
@@ -41,7 +41,7 @@
                 "command": "python '${workspaceFolder}/.vscode/compilers/pycompile.py' '${fileDirname}' '${fileBasename}' '${workspaceFolder}'"
             },
             "windows": {
-                "command": "python '${workspaceFolder}\\.vscode\\compilers\\pycompile.py' '${fileDirname}' '${fileBasename}' '${workspaceFolder}'"
+                "command": "python ${workspaceFolder}\\.vscode\\compilers\\pycompile.py ${fileDirname} ${fileBasename} ${workspaceFolder}"
             },
             "group": "build",
             "presentation": {
@@ -58,7 +58,7 @@
                 "command": "python '${file}'"
             },
             "windows": {
-                "command": "python '${file}'"
+                "command": "python ${file}"
             },
             "group": "test",
             "presentation": {
@@ -74,7 +74,7 @@
                 "command": "python '${workspaceFolder}/.vscode/testers/testSite.py' '${file}' '${file}.test' '${fileExtname}' '${fileDirname}' '${workspaceFolder}' '${fileBasename}'"
             },
             "windows": {
-                "command": ""
+                "command": "python ${workspaceFolder}/.vscode/testers/testSite.py ${file} ${file}.test ${fileExtname} ${fileDirname} ${workspaceFolder} ${fileBasename}"
             },
             "group": "test",
             "presentation": {

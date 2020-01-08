@@ -21,6 +21,7 @@ def construct():
     COMMAND.append("pyinstaller")
     COMMAND.append("--onefile")
     COMMAND.append("--clean")
+    COMMAND.append("--noconsole")
     COMMAND.append("--distpath")
     COMMAND.append(distpath)
     for file in os.listdir(fileDirname):
