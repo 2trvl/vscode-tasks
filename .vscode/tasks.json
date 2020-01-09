@@ -7,10 +7,25 @@
             "label": "compile clang",
             "type": "shell",
             "linux": {
-                "command": "python '${workspaceFolder}/.vscode/compilers/compile.py' '${fileDirname}' '${fileBasename}' '${workspaceFolder}'"
+                "command": "python ${workspaceFolder}/.vscode/compilers/compile.py ${fileDirname} ${fileBasename} ${workspaceFolder}"
             },
             "windows": {
                 "command": "python ${workspaceFolder}\\.vscode\\compilers\\compile.py ${fileDirname} ${fileBasename} ${workspaceFolder}"
+            },
+            "group": "build",
+            "presentation": {
+                "reveal": "silent"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "compile clang with cmake",
+            "type": "shell",
+            "linux": {
+                "command": "python ${workspaceFolder}/.vscode/compilers/mcompile.py ${fileDirname}"
+            },
+            "windows":{
+                "command": "python ${workspaceFolder}\\.vscode\\compilers\\mcompile.py ${fileDirname}"
             },
             "group": "build",
             "presentation": {
@@ -38,7 +53,7 @@
             "label": "compile python via pyinstaller",
             "type": "shell",
             "linux": {
-                "command": "python '${workspaceFolder}/.vscode/compilers/pycompile.py' '${fileDirname}' '${fileBasename}' '${workspaceFolder}'"
+                "command": "python ${workspaceFolder}/.vscode/compilers/pycompile.py ${fileDirname} ${fileBasename} ${workspaceFolder}"
             },
             "windows": {
                 "command": "python ${workspaceFolder}\\.vscode\\compilers\\pycompile.py ${fileDirname} ${fileBasename} ${workspaceFolder}"
@@ -55,7 +70,7 @@
             "label": "run python file",
             "type": "shell",
             "linux": {
-                "command": "python '${file}'"
+                "command": "python ${file}"
             },
             "windows": {
                 "command": "python ${file}"
@@ -71,7 +86,7 @@
             "label": "test script",
             "type": "shell",
             "linux": {
-                "command": "python '${workspaceFolder}/.vscode/testers/testSite.py' '${file}' '${file}.test' '${fileExtname}' '${fileDirname}' '${workspaceFolder}' '${fileBasename}'"
+                "command": "python ${workspaceFolder}/.vscode/testers/testSite.py ${file} ${file}.test ${fileExtname} ${fileDirname} ${workspaceFolder} ${fileBasename}"
             },
             "windows": {
                 "command": "python ${workspaceFolder}/.vscode/testers/testSite.py ${file} ${file}.test ${fileExtname} ${fileDirname} ${workspaceFolder} ${fileBasename}"

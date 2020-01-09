@@ -13,6 +13,7 @@ This repository contains tasks for automating C and Python programming in vscode
 ### Windows
 * install <b>any</b> Python <b>3.5+</b> version along with pip and <b>add it to PATH</b>
 * install MinGW compiler and <b>add it to PATH</b>
+* install cmake and Visual Studio with Clang compiler and <b>add it to PATH</b>
 * with vscode open press <b>[ctrl+shift+p]</b>
     * print <i>"Preferences: Open Keyboard Shortcuts (JSON)"</i> and press [enter], copy to the opened file all strings from <i>.vscode/keybindings.json</i>
 * with your terminal open as administrator run this commands:
@@ -38,6 +39,7 @@ This repository contains tasks for automating C and Python programming in vscode
 
 * Compile
     * clang (placed in <i>./cdist</i>)
+    * clang with cmake
     * python in one .exe (via pyinstaller, placed in <i>./pydist</i>)
 * Run
     * compiled clang
